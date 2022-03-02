@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <title>Dashboard Radio Communication of Fisherman</title>
+</head>
+<body id="body">
+    <div class="container">
+        <nav class="navbar">
+        </nav>
+        <main id="main-container-user">
+            <div id="main-top">
+                <div class="data-user">
+                    <div class="card-data-user">
+                        <a class="text-data-user">Data User</a>
+                    </div>
+                </div>
+                <div class="total-user">
+                    <div class="card-total-user">
+                        <a class="text-total-user">Total User</a>
+                        {% block content %}
+                        <a class="text-total-user-a">{{totalofuser}}</a>
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+            <div id="example" class="card-table">
+                <table>
+                    <tr>
+                      <th>No</th>
+                      <th>Name</th>
+                      <th>Ship Number</th>
+                      <th>Join Date</th>
+                      <th>Status</th>
+                    </tr>
+                    {% for user in data %}
+                    <tr>
+                        <td>{{ user.id }}</td>
+                        <td>{{ user.Name }}</td>
+                        <td>{{ user.Ship_Number }}</td>
+                        <td>{{ user.Join_Date }}</td>
+                        <td>{{ user.Status }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <div class="slide">
+                <a href="" class="next">&#10703</a>
+                <a href="" class="previous">&#10704</a>
+            </div>
+        </main>
+        <div id="left-bar">
+            <div class="icon-top">
+                <div>
+                    <a href="/main">
+                        <img class="bg-dashboard" class="icon-dashboard" src="https://img.icons8.com/wired/64/000000/dashboard.png" alt='dashboard'/>
+                    </a>
+                </div>
+                <div>
+                    <a href="/user">
+                        <img class="bg-user" class="icon-user" src="{{url_for('static', filename='icons8-user-64.png')}}">
+                    </a>
+                </div>
+            </div>
+            <div class="icon-down">
+                <div>
+                    <a href="/">
+                        <img class="bg-exit" class="icon-exit" src="https://img.icons8.com/dotty/80/000000/exit.png" alt='exit'/>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div id="right-bar">
+            <div id="weather-bar">
+                <div class="bottom-today">
+                    <div class="card-day">
+                        <p id='day' class="text-white"></p>
+                    </div>
+                    <div class="card-date">
+                        <a id='date' class="text-white-p"></a>
+                    </div>
+                    <div class="card-time">
+                        <a id='dateTime' class="text-white32"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>    
+</html>
