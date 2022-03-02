@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - youtube.com/codingnepal -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up to Dashboard Radio Communication of Fishman</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </head>
+  {% block content %}
+  <body class="bodysign">
+    <div class="center">
+      <h1>Sign Up</h1>
+      <form action="/signup" method="POST">
+        <div class="txt_field">
+          <input type="text" name="name" required>
+          <span></span>
+          <label>Name</label>
+        </div>
+        <div class="txt_field">
+          <input type="text" name="email" required>
+          <span></span>
+          <label>Email</label>
+        </div>
+        <div class="txt_field">
+          <input type="password" name="password" required>
+          <span></span>
+          <label>Password</label>
+        </div>
+        <input type="submit" value="Sign Up">
+        <div class="signup_link">
+          If you have account, <a href="/signin">Log in</a>  here!
+        </div>
+      </form>
+    </div>
+  </body>
+  {% endblock %}
+</html>
