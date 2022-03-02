@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <title>Dashboard Radio Communication of Fisherman</title>
+</head>
+<body style="background-image: linear-gradient(120deg,#297fb99a, #8d44adcc), url('/static/sea-g4f81c90c5_1920.jpg')">
+    <div class="container-landing">
+        <nav class="navbar-landing">
+          <div class="navbar-left icon-card-landing">
+               <img src="{{ url_for('static', filename='logo-radionelayan.png') }}"/>
+          </div>
+           <ul class="navbar-right">
+            <li class="section-btn"><a href="/signin" data-toggle="modal" data-target="#modal-form">Log in</a></li>
+            <li class="section-btn"><a href="/signup" data-toggle="modal" data-target="#modal-form">Sign up</a></li>
+           </ul>
+        </nav>
+        <main-landing>
+             <div class="main-left">
+                  <h1>Dashboard Radio Nelayan</h1>
+                  <p>maintain the location of fishermen when catching fish in the sea and always be alert when there is a message distress</p>
+             </div>
+             <div class="main-right">
+                  <img src="{{ url_for('static', filename='example-dashboard.png') }}"/>
+             </div>
+        </main-landing>
+        <footer class="footer-bottom contact">
+                <div class="footer-left">
+                     <div class="copyright-text"> 
+                          <p>Copyright &copy; 2022 Radio Nelayan</p>
+                     </div>
+                </div>
+                <div class="footer-right">
+                     <div class="phone-contact"> 
+                          <p>Call us <span>(+62) 89-65-88-65-929 </span></p>
+                     </div>
+                </div>
+        </footer>
+    </div>
+</body>
+</html>
