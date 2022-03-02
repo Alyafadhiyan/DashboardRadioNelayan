@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <title>Dashboard Radio Communication of Fisherman</title>
+</head>
+<body id="body">
+    <div class="container">
+        <nav class="navbar">
+        </nav>
+        <main id="main-container">
+            <div id="main-top">
+                {% block content %}
+                <div class="welcome">
+                    {% if session['name'] %}
+                    <div class="card-welcome-p">
+                        <p class="text-white-p">Halo, {{ session['name'] }}!</p>
+                        <p class="text-white-p">Welcome back to,</p>
+                    </div>
+                    <div class="card-welcome-a">
+                        <a class="text-white">Dashboard Radio Communication of Fisherman</a>
+                    </div>
+                    {% endif %}
+                </div>
+                {% endblock %}
+                <div class="location">
+                    <div class="card">
+                        <a id="timezone" class="text-primary20"></a>
+                        <p class="text-primary-p">Location</p>
+                        <div class="icon-card">
+                            <img src="{{ url_for('static', filename='icons8-location-64.png') }}"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="temperature">
+                    <div class="card">
+                        <a id="temp" class="text-primary"></a>
+                        <p class="text-primary-p">Temperature</p>
+                        <div class="icon-card">
+                            <img src="{{ url_for('static', filename='icons8-temperature-64.png') }}"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="active-device">
+                    <div class="card">
+                        <a id="activeDevice" class="text-primary">{{activeDevice}}</a>
+                        <p class="text-primary-p">Active Device</p>
+                        <div class="icon-card">
+                            <img src="{{ url_for('static', filename='icons8-touchpad-50.png') }}"/>
+                        </div>
+                    </div>
+                </div>
+                <div action="/" method="GET" class="warning" id="warning">
+                    <div id="notif-warning">
+                        <div class="symbol-warning">
+                            <div class="card-warning">
+                                <a class="text-primary-warning-white">Warning Notification</a>
+                            </div>
+                            <div class="icon-warning">
+                                <img class="img-warning" src="{{ url_for('static', filename='icons8-warning-shield-80.png') }}"/>
+                            </div>
+                        </div>
+                        <div class="card-warning-user">
+                            <div class="card-warning-identity">
+                                <div class="symbol-identity">
+                                    <div class="card-warning-identity">
+                                        <a class="text-primary-warning-identity">{{ wu.Name }}</a>
+                                    </div>
+                                </div>
+                                <div class="symbol-identity">
+                                    <div class="card-warning-identity">
+                                        <a class="text-primary-warning-identity">Ship Number : {{ wu.Ship_Number }}</a>
+                                    </div>
+                                </div>
+                                <div class="symbol-identity">
+                                    <div class="card-warning-identity">
+                                        <a class="text-primary-warning-identity">{{ wu.Latitude }} , {{ wu.Longitude }} </a>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div id="notif-warning-safe">
+                        <div class="symbol-warning-safe">
+                            <div class="card-warning">
+                                <a class="text-primary-warning">Danger Console</a>
+                            </div>
+                        </div>
+                        <div class="buttom-warning-safe">
+                            <div class="card-safe">
+                                <a class="text-primary-safe">Secure</a>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div id="main-bottom">
+                <div>
+                    <div class="location-maps">
+                        <a class="text-loc">Location</a>
+                    </div>
+                    <div id="maps">
+                        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDyPGbZ9TivWiydJgM5zirgs2S-UP8IvY&callback=initMap&libraries=&v=weekly" async></script>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <div id="left-bar">
+            <div class="icon-top">
+                <div>
+                    <a href="/main">
+                        <img class="bg-dashboard" class="icon-dashboard" src="https://img.icons8.com/wired/64/000000/dashboard.png" alt='dashboard'/>
+                    </a>
+                </div>
+                <div>
+                    <a href="/user">
+                        <img class="bg-user" class="icon-user" src="{{url_for('static', filename='icons8-user-64.png')}}">
+                    </a>
+                </div>
+            </div>
+            <div class="icon-down">
+                <div>
+                    <a href="/">
+                        <img class="bg-exit" class="icon-exit" src="https://img.icons8.com/dotty/80/000000/exit.png" alt='exit'/>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div id="right-bar">
+            <div id="weather-bar">
+                <div class="bottom-today">
+                    <div class="card-day">
+                        <p id='day' class="text-white"></p>
+                    </div>
+                    <div class="card-date">
+                        <a id='date' class="text-white-p"></a>
+                    </div>
+                    <div class="card-time">
+                        <a id='dateTime' class="text-white32"></a>
+                    </div>
+                </div>
+                <div class="bottom-today">
+                    <div class="card-weather">
+                        <a id="humidity" class="text-white-p"></a>
+                    </div>
+                    <div class="card-weather">
+                        <a id="pressure" class="text-white-p"></a>
+                    </div>
+                    <div class="card-weather">
+                        <a id="wind" class="text-white-p"></a>
+                    </div>
+                    <div class="card-weather">
+                        <a id="fixsunrise" class="text-white-p"></a>
+                    </div>
+                    <div class="card-weather">
+                        <a id="fixsunset" class="text-white-p"></a>
+                    </div>
+                </div>
+            </div>
+            <div id="user-bar">
+                <div class="bottom-user">
+                    <div class="card-user">
+                        <a id="close" class="text-primary-warning">Close</a>
+                    </div>
+                </div>
+                <div class="profil">
+                    <div class="bottom-user-identity">
+                        <div class="card-user">
+                            <a class="text-white">{{ wu.Name }}</a>
+                        </div>
+                    </div>
+                    <div class="bottom-user-identity">
+                        <div class="card-user">
+                            <a class="text-white">Ship Number : {{ wu.Ship_Number }}</a>
+                        </div>
+                    </div>
+                    <div class="bottom-user-identity">
+                        <div class="card-user">
+                            <a id='dateTime' class="text-white">{{ wu.Latitude }} , {{ wu.Longitude }}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>    
+</html>
