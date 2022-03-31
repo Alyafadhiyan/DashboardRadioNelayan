@@ -17,7 +17,7 @@ mysql = MySQL(app)
 
 scope = ['https://spreadsheets.google.com/feeds',
              'https://www.googleapis.com/auth/drive']
-creds = ServiceAccountCredentials.from_json_keyfile_name('/var/www/html/radionelayan/polished-vault-333915-bdf3a7780897.json', scope)
+creds = ServiceAccountCredentials.from_json_keyfile_name('/var/www/html/radionelayan/[your json file]', scope)
 client = gspread.authorize(creds)
 gsheet = client.open("DataNodeMCU").sheet1
 
