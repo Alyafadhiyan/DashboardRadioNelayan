@@ -89,7 +89,7 @@ function initMap() {
 
   }
 
-  const API_KEY ='4f0cf9f215cfbe928e8416d661f15d71';
+  const API_KEY ='your API key';
 
 getWeatherData()
 function getWeatherData () {
